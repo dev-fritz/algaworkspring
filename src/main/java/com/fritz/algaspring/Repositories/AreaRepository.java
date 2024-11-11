@@ -21,8 +21,17 @@ public class AreaRepository {
         return query.getResultList();
     }
 
+    public Area areaById(long id) {
+        return manager.find(Area.class, id);
+    }
+
     @Transactional
     public Area save(Area area) {
         return manager.merge(area);
+    }
+
+    @Transactional
+    public void delete(Area area) {
+        manager.remove(area);
     }
 }
