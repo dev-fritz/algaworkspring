@@ -1,12 +1,12 @@
 package com.fritz.algaspring.Entities;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.math.BigDecimal;
 
 @Entity
 public class Merchant {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;
@@ -18,6 +18,18 @@ public class Merchant {
     private String phone;
 
     private BigDecimal deliveryTax;
+
+    @ManyToOne
+    @JoinColumn(name = "area_id")
+    private Area area;
+
+    public Area getArea() {
+        return area;
+    }
+
+    public void setArea(Area area) {
+        this.area = area;
+    }
 
     public BigDecimal getDeliveryTax() {
         return deliveryTax;
