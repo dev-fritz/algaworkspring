@@ -1,5 +1,7 @@
 package com.fritz.algaspring.Entities;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.*;
 import java.util.Objects;
 
@@ -12,6 +14,8 @@ public class Area {
 
     private String name;
 
+    @Column(nullable = true)
+    @JsonProperty("description") // Alias
     private String description;
 
     public Long getId() {
